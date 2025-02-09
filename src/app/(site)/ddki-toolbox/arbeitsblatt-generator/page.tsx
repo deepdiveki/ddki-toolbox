@@ -51,7 +51,7 @@ const ProductNameGeneratorPage = () => {
       {
         role: "system",
         content:
-          "Du bekommst Informationen zu einem Arbeitsblatt. Mit diesen Infomrationen erstellst du das Arbeitsblatt \n",
+          "Du bekommst Informationen zu einem Arbeitsblatt. Mit diesen Informationen erstellst du das Arbeitsblatt \n",
       },
       {
         role: "user",
