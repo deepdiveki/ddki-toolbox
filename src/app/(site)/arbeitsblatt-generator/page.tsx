@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
-import { integrations, messages } from "../../../../../integrations.config";
+import { integrations, messages } from "../../../../integrations.config";
 
 const dataSchema = z.object({
   fach: z.string(),

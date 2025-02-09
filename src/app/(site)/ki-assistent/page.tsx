@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
-import { integrations, messages } from "../../../../../integrations.config";
+import { integrations, messages } from "../../../../integrations.config";
 
 const ArticleTitleGeneratorSchema = z.object({
   numberOfWord: z.string(),
@@ -87,16 +87,16 @@ const ArticleTitleGeneratorPage = () => {
   return (
     <>
       <title>
-      Personachat
+      KI-Assistent
       </title>
-      <meta name="description" content="Personachat" />
-      <Breadcrumb pageTitle="Personachat" />
+      <meta name="description" content="KI-Assistent" />
+      <Breadcrumb pageTitle="KI-Assistent" />
 
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">
           <div className="gradient-box rounded-lg bg-dark-8 p-8 lg:col-span-4">
-            <h2 className="pb-2 text-2xl font-bold text-white">Personachat</h2>
-            <p className="pb-6">Mit wem möchten Sie sprechen:</p>
+            <h2 className="pb-2 text-2xl font-bold text-white">KI-Assistent</h2>
+            <p className="pb-6">Laden Sie hier ihre Quellen hoch:</p>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col">
                 <label htmlFor="articleTopic" className="pb-4">

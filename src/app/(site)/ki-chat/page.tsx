@@ -63,17 +63,6 @@ const DDKIKiChat = () => {
       <Breadcrumb pageTitle="KI-Chat" />
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto max-w-[800px] px-4 sm:px-8">
-          {/* iFrame für den externen Chat */}
-          <div className="mb-8">
-            <iframe
-              src="https://ddki-chat.vercel.app"
-              width="100%"
-              height="600"
-              frameBorder="0"
-              className="rounded-lg shadow-md"
-              title="DDKI KI-Chat"
-            ></iframe>
-          </div>
 
           {/* Chat Messages */}
           <div className="rounded-lg bg-transparent p-8 space-y-4">

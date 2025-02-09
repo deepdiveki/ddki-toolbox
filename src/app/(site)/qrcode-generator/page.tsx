@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
-import { integrations, messages } from "../../../../../integrations.config";
+import { integrations, messages } from "../../../../integrations.config";
 
 const dataSchema = z.object({
   vom_user_eingefügter_link: z.string(),
@@ -49,21 +49,21 @@ const SpreadsheetGeneratorPage = () => {
   return (
     <>
       <title>
-      Feedback fuer SuS
+      QR Code Generator
       </title>
       <meta
         name="vom_user_eingefügter_link"
         content="This is AI Examples page for AI Tool"
       />
-      <Breadcrumb pageTitle="Feedback fuer SuS" />
+      <Breadcrumb pageTitle="QR Code Generator" />
 
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">
           <div className="gradient-box rounded-lg bg-dark-8 p-8 lg:col-span-4 ">
             <h2 className="pb-2 text-2xl font-bold text-white">
-            Feedback fuer SuS
+              QR Code Generator
             </h2>
-            <p className="pb-6">Feedback fuer SuS</p>
+            <p className="pb-6">Erstelle einen QR Code für deinen Unterricht</p>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col">
                 <label htmlFor="vom_user_eingefügter_link" className="pb-4">
