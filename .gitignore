@@ -1,0 +1,10 @@
+# Ignore node_modules and Next.js build output
+node_modules/
+.next/
+
+# Additional files and directories you might want to ignore
+.env
+.idea/
+dist/
+build/
+*.log
