@@ -1,5 +1,3 @@
-import AboutSection from "@/components/About/AboutSection";
-import Team from "@/components/About/Team";
 import Breadcrumb from "@/components/Breadcrumb";
 import CallToAction from "@/components/CallToAction";
 import Features from "@/components/Home/Features";
