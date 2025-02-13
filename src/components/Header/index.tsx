@@ -22,15 +22,15 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const authCookie = getCookie("next-auth.session-token");
-    if (authCookie) {
-      try {
-        const userData = JSON.parse(decodeURIComponent(authCookie));
-        setUserName(userData.name);
-      } catch (error) {
-        console.error("Error parsing auth cookie:", error);
-      }
-    }
+     // Call the getSession endpoint
+    fetch("/api/getSession")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.name) {
+          setUserName(data.name);
+        }
+      })
+      .catch((err) => console.error("Error fetching session:", err));
   }, []);
 
   // Sticky menu
