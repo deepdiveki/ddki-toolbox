@@ -2,7 +2,7 @@
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import logo from "../../../public/images/logo/logo.svg";
 import DropDown from "./DropDown";
@@ -14,7 +14,10 @@ const Header = () => {
 
   const { data: session } = useSession();
 
+  const router = useRouter();
   const pathUrl = usePathname();
+
+
 
   // Sticky menu
   const handleStickyMenu = () => {
@@ -40,9 +43,10 @@ const Header = () => {
       >
         <div className="relative mx-auto max-w-[1170px] items-center justify-between px-4 sm:px-8 lg:flex xl:px-0">
           <div className="flex w-full items-center justify-between lg:w-1/4">
-            <Link href="/">
-              <Image src={logo} alt="Logo" width={164} height={36} />
-            </Link>
+          <Link href="/" className="flex items-center gap-3">
+  <Image src={logo} alt="Logo" width={100} height={24} className="h-10 w-auto" />
+  <span className="text-white text-xl font-bold">DeepDiveKI</span>
+</Link>
 
             <button
               onClick={() => setNavigationOpen(!navigationOpen)}
@@ -122,7 +126,19 @@ const Header = () => {
             <div className="mt-7 flex items-center gap-6 lg:mt-0">
               {session ? (
                 <>
-                  <p>{session?.user?.name}</p>
+                  <button
+                    aria-label="Profile button"
+                    onClick={() => {
+                      if (pathUrl !== "/profil") {
+                        router.push("/profil");  // Directly redirect to profile page
+                      }
+                    }}
+                    className={`text-sm ${
+                      pathUrl === "/profil" ? "text-blue-400" : "text-white hover:text-opacity-75"
+                    }`}
+                  >
+                    {session?.user?.name}
+                  </button>
                   <button
                     aria-label="Sign Out button"
                     onClick={() => signOut()}
@@ -133,17 +149,17 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <a
-                    href="https://deepdive-ki.de/auth/signin"
+                  <Link
+                    href="/auth/signin"
                     className="text-sm text-white hover:text-opacity-75"
                   >
-                    Sign In
-                  </a>
-                  <a
-                    href="https://deepdive-ki.de/auth/signup"
+                    Login
+                  </Link>
+                  <Link
+                    href="/auth/signup"
                     className="button-border-gradient hover:button-gradient-hover relative flex items-center gap-1.5 rounded-lg px-4.5 py-2 text-sm text-white shadow-button hover:shadow-none"
                   >
-                    Sign up
+                    Registrieren
                     <svg
                       className="mt-0.5"
                       width="16"
@@ -157,7 +173,7 @@ const Header = () => {
                         fill="white"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </>
               )}
             </div>
