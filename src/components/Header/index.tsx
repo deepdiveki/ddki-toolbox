@@ -1,5 +1,4 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -11,13 +10,28 @@ import menuData from "./menuData";
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
-
-  const { data: session } = useSession();
+  const [userName, setUserName] = useState<string | null>(null);
 
   const router = useRouter();
   const pathUrl = usePathname();
 
+  const getCookie = (name: string): string | undefined => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
+  };
 
+  useEffect(() => {
+    const authCookie = getCookie("next-auth.session-token");
+    if (authCookie) {
+      try {
+        const userData = JSON.parse(decodeURIComponent(authCookie));
+        setUserName(userData.name);
+      } catch (error) {
+        console.error("Error parsing auth cookie:", error);
+      }
+    }
+  }, []);
 
   // Sticky menu
   const handleStickyMenu = () => {
@@ -124,24 +138,26 @@ const Header = () => {
             </nav>
 
             <div className="mt-7 flex items-center gap-6 lg:mt-0">
-              {session ? (
+              {userName ? (
                 <>
                   <button
                     aria-label="Profile button"
                     onClick={() => {
                       if (pathUrl !== "/profil") {
-                        router.push("/profil");  // Directly redirect to profile page
+                        router.push("https://www.deepdive-ki.de/profil");  // Directly redirect to profile page
                       }
                     }}
                     className={`text-sm ${
                       pathUrl === "/profil" ? "text-blue-400" : "text-white hover:text-opacity-75"
                     }`}
                   >
-                    {session?.user?.name}
+                    {userName}
                   </button>
                   <button
                     aria-label="Sign Out button"
-                    onClick={() => signOut()}
+                    onClick={() => {
+                      window.location.href = 'https://www.deepdive-ki.de/api/logout';
+                    }}
                     className="text-sm text-white hover:text-opacity-75"
                   >
                     Sign Out

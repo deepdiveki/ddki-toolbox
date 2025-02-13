@@ -4,19 +4,19 @@ export const productsLink: FooterLink[] = [
   {
     id: 1,
     title: "DDKI ToolBox",
-    href: "/ddki-toolbox",
+    href: "/",
     newTab: false,
   },
   {
     id: 2,
     title: "ChatBot für Ihre Schule",
-    href: "/chatbot-fuer-ihre-schule",
+    href: "https://www.deepdive-ki.de/chatbot-fuer-ihre-schule",
     newTab: false,
   },
   {
     id: 3,
     title: "Fortbildungen",
-    href: "/fortbildungen",
+    href: "https://www.deepdive-ki.de/fortbildungen",
     newTab: false,
   },
 ];
@@ -25,13 +25,13 @@ export const companiesLink: FooterLink[] = [
   {
     id: 11,
     title: "Impressum",
-    href: "/impressum",
+    href: "https://www.deepdive-ki.de/impressum",
     newTab: false,
   },
   {
     id: 13,
     title: "Datenschutz",
-    href: "/datenschutz",
+    href: "https://www.deepdive-ki.de/datenschutz",
     newTab: false,
   },
 ];
@@ -39,13 +39,13 @@ export const supportsLink: FooterLink[] = [
   {
     id: 21,
     title: "Kontakt",
-    href: "/about#support",
+    href: "https://www.deepdive-ki.de/about#support",
     newTab: false,
   },
   {
     id: 32,
     title: "Über uns",
-    href: "/about",
+    href: "https://www.deepdive-ki.de/about",
     newTab: false,
   },
   {

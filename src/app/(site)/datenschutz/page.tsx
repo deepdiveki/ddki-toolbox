@@ -14,12 +14,12 @@ const PrivacyPage = () => {
         <div className="max-w-4xl mx-auto text-lg space-y-6">
           <h1 className="text-2xl font-bold">Informationen zum Datenschutz</h1>
           <p>
-          Mit diesen Datenschutzhinweisen informieren wir Sie über unseren Umgang mit Ihren personenbezogenen Daten und über Ihre Rechte nach der Europäischen Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG). Verantwortlich für die Datenverarbeitung ist die DeepDive-KI UG (haftungsbeschränkt) (nachfolgend als „wir“ oder „uns“ bezeichnet).
+          Mit diesen Datenschutzhinweisen informieren wir Sie über unseren Umgang mit Ihren personenbezogenen Daten und über Ihre Rechte nach der Europäischen Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG). Verantwortlich für die Datenverarbeitung ist die DeepDiveKI UG (haftungsbeschränkt) (nachfolgend als „wir“ oder „uns“ bezeichnet).
           </p>
 
           <h2 className="text-xl font-semibold">Allgemeine Angaben</h2>
 
-          <h3 className="text-lg font-semibold">1. Kontakt</h3>
+          <h3 className="text-lg font-semibold">1. Kontakt</h3>s
           <p>
             Wenn Sie Fragen oder Anregungen zu diesen Informationen haben oder sich wegen der Geltendmachung Ihrer Rechte an uns wenden möchten, richten Sie Ihre Anfrage bitte an:
           </p>
