@@ -17,7 +17,7 @@ const menuData: Menu[] = [
     id: 6,
     title: "DDKI ToolBox",
     newTab: false,
-    path: "/ddki-toolbox",
+    path: "/",
     submenu: [
       {
         id: 66,

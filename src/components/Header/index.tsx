@@ -22,16 +22,17 @@ const Header = () => {
   };
 
   useEffect(() => {
-     // Call the getSession endpoint
-    fetch("/api/getSession")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.name) {
-          setUserName(data.name);
-        }
-      })
-      .catch((err) => console.error("Error fetching session:", err));
-  }, []);
+      fetch("/api/getSession", { credentials: "include" })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.name) {
+            setUserName(data.name);
+          } else {
+            console.log("No session found", data);
+          }
+        })
+        .catch((err) => console.error("Error fetching session:", err));
+    }, []);
 
   // Sticky menu
   const handleStickyMenu = () => {
