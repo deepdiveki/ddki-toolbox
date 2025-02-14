@@ -22,9 +22,10 @@ const Header = () => {
   };
 
   useEffect(() => {
-      fetch("/api/getSession", { credentials: "include" })
+      fetch("https://www.deepdive-ki.de/api/getSession", { credentials: "include" })
         .then((res) => res.json())
         .then((data) => {
+          console.log("Fetched data:", data);
           if (data.name) {
             setUserName(data.name);
           } else {
@@ -54,14 +55,14 @@ const Header = () => {
           stickyMenu
             ? "before:features-row-border bg-dark/70 !py-4 shadow backdrop-blur-lg transition duration-100 before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-full lg:!py-0"
             : "py-7 lg:py-0"
-        }`}
-      >
-        <div className="relative mx-auto max-w-[1170px] items-center justify-between px-4 sm:px-8 lg:flex xl:px-0">
-          <div className="flex w-full items-center justify-between lg:w-1/4">
-          <Link href="/" className="flex items-center gap-3">
-  <Image src={logo} alt="Logo" width={100} height={24} className="h-10 w-auto" />
-  <span className="text-white text-xl font-bold">DeepDiveKI</span>
-</Link>
+                }`}
+              >
+                <div className="relative mx-auto max-w-[1170px] items-center justify-between px-4 sm:px-8 lg:flex xl:px-0">
+                  <div className="flex w-full items-center justify-between lg:w-1/4">
+                    <Link href="/" className="flex items-center gap-3">
+                        <Image src={logo} alt="Logo" width={100} height={24} className="h-10 w-auto" />
+                            <span className="text-white text-xl font-bold">DeepDiveKI</span>
+                    </Link>
 
             <button
               onClick={() => setNavigationOpen(!navigationOpen)}

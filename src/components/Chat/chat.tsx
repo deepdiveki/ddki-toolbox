@@ -1,71 +1,92 @@
-"use client";
+'use client';
 
 import Breadcrumb from "@/components/Breadcrumb";
+import type { Message } from 'ai';
+import { useChat } from 'ai/react';
+import { useState } from 'react';
+import useSWR, { useSWRConfig } from 'swr';
 
-type Message = {
-  sender: string;
-  text: string;
-};
+import { MultimodalInput } from './multimodal-input';
+import { Messages } from './messages';
 
-interface ChatProps {
-  messages: Message[];
-  inputMessage: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+const fetcher = (url: string) =>
+  fetch(url).then((res) => {
+    if (!res.ok) throw new Error('Network response was not ok');
+    return res.json();
+  });
 
-export function Chat({ messages, inputMessage, handleChange, handleSubmit }: ChatProps) {
+const generateUUID = () => crypto.randomUUID();
+
+export function Chat({
+      id,
+      initialMessages,
+      //selectedModelId,
+      isReadonly,
+    }: {
+      id: string;
+      initialMessages: Array<Message>;
+      //selectedModelId: string;
+      isReadonly: boolean;
+    }) {
+      const { mutate } = useSWRConfig();
+      const modelId = 'gpt-4';
+
+      const {
+        messages,
+        setMessages,
+        handleSubmit,
+        input,
+        setInput,
+        append,
+        isLoading,
+        stop,
+        reload,
+      } = useChat({
+        id,
+        body: { id, modelId },
+        initialMessages,
+        experimental_throttle: 100,
+        sendExtraMessageFields: true,
+        generateId: generateUUID,
+        onFinish: () => {
+          mutate('/api/history');
+        },
+      });
+
+
   return (
     <>
-      <title>DDKI KI-Chat</title>
-      <meta name="description" content="This is AI Examples page for AI Tool" />
-      <Breadcrumb pageTitle="KI-Chat" />
-      <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
-        <div className="mx-auto max-w-[800px] px-4 sm:px-8">
+    <Breadcrumb pageTitle="KI-Chat" />
+      <div className="flex flex-col pt-[80px] pb-[120px]">
 
-          {/* Chat Messages */}
-          <div className="rounded-lg bg-transparent p-8 space-y-4">
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  message.sender === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`rounded-lg p-3 ${
-                    message.sender === "user"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-700 text-white"
-                  } max-w-[70%]`}
-                >
-                  {message.text}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Chat Input Field */}
-          <form
-            onSubmit={handleSubmit}
-            className="flex items-center bg-gray-800 rounded-lg p-2 mt-4 shadow-md"
-          >
-            <input
-              type="text"
-              value={inputMessage}
-              onChange={handleChange}
-              placeholder="Sende eine Nachricht an den DDKI KI-Chat"
-              className="flex-1 bg-transparent text-white px-3 py-2 outline-none placeholder-gray-500"
-            />
-            <button
-              type="submit"
-              className="flex items-center justify-center bg-gray-700 text-white w-10 h-10 rounded-full hover:bg-gray-600"
-            >
-              ▲
-            </button>
-          </form>
+<div className="flex-grow flex flex-col ">
+        <Messages
+          chatId={id}
+          isLoading={isLoading}
+          messages={messages}
+          setMessages={setMessages}
+          reload={reload}
+          isReadonly={isReadonly}
+        />
         </div>
-      </section>
+
+        <form className="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full max-w-[800px] ">
+          {!isReadonly && (
+            <MultimodalInput
+              chatId={id}
+              input={input}
+              setInput={setInput}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+              stop={stop}
+              messages={messages}
+              setMessages={setMessages}
+              append={append}
+            />
+          )}
+        </form>
+      </div>
+
     </>
   );
 }
