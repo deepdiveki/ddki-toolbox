@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-const ddki_toolbox = () => {
-  return (
-    <>
-      <Features />
-      <CallToAction />
-    </>
-  );
-};
-
-export default ddki_toolbox;
+const DDKIToolbox = () => {
+    return (
+      <div className="ddki-toolbox-page">
+        <Features />
+        <CallToAction />
+      </div>
+    );
+  };
+  
+  export default DDKIToolbox;

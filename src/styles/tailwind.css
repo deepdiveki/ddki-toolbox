@@ -505,6 +505,8 @@ textarea {
 
 .generated-content-container p {
   @apply mt-2
-
 }
 
+.footer-bg-gradient {
+  background: none !important;
+}
