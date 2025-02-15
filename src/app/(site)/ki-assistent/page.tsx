@@ -99,9 +99,11 @@ const ArticleTitleGeneratorPage = () => {
       <meta name="description" content="KI-Assistent" />
       
       <div className="flex items-center justify-center gap-4 mt-2">
-        <AssistantAnimation />
-        <Breadcrumb pageTitle="KI-Assistent" />
-      </div>
+  <div className="mt-10">
+    <AssistantAnimation />
+  </div>
+  <Breadcrumb pageTitle="KI-Assistent" />
+</div>
 
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">

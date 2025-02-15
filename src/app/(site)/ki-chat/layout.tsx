@@ -21,12 +21,14 @@ export default function KiChatLayout({
       </Head>
 
       <div className="flex flex-col h-screen">
-        <div className="flex items-center justify-center gap-4 mt-2">
-          <ChatbotAnimation />
-          <Breadcrumb pageTitle="KI-Chat" />
-        </div>
+  <div className="flex items-center justify-center gap-4 mt-2">
+    <div className="mt-10">
+      <ChatbotAnimation />
+    </div>
+    <Breadcrumb pageTitle="KI-Chat" />
+  </div>
 
-        <div className="flex-1">{children}</div>
+  <div className="flex-1">{children}</div>
 
         {/* Footer or additional buttons */}
         <div className="sticky bottom-0 bg-transparent">

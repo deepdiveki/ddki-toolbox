@@ -58,10 +58,11 @@ const SpreadsheetGeneratorPage = () => {
       />
       {/* Header mit Breadcrumb & Animation */}
       <div className="flex items-center justify-center gap-4 mt-2">
-      <QRCodeAnimation />
-        <Breadcrumb pageTitle="QR Code Generator" />
-      </div> 
-
+  <div className="mt-10">
+    <QRCodeAnimation />
+  </div>
+  <Breadcrumb pageTitle="QR Code Generator" />
+</div>
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">
           <div className="gradient-box rounded-lg bg-dark-8 p-8 lg:col-span-4 ">
