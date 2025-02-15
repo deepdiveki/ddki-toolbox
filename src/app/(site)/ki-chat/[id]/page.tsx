@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 
-import { Chat } from '@/components/chat';
+import { Chat } from "@/components/Chat/chat";
 import { DEFAULT_MODEL_NAME, models } from '@/lib/ai/models';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
@@ -14,6 +14,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 //   }
 
   notFound();
+
+  const chatId = "1234" //Platzhalter
 
   return (
     <>
