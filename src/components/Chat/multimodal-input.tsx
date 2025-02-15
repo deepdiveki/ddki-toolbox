@@ -195,7 +195,7 @@ function PureMultimodalInput({
   );
 
   return (
-    <div className="fixed bottom-90 w-full">
+    <div className="w-full">
 
       <input
         type="file"
@@ -230,7 +230,7 @@ function PureMultimodalInput({
       />
 
 
-      <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
+      <div className="absolute right-6 bottom-6">
         {isLoading ? (
           <StopButton stop={stop} setMessages={setMessages} />
         ) : (

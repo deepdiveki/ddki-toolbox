@@ -54,8 +54,8 @@ export function Chat({
 
 
   return (
-      <div className="pb-[140px]">
-
+      <div className="flex flex-col h-full">
+         <div className="flex-1">
             <Messages
               chatId={id}
               isLoading={isLoading}
@@ -64,8 +64,9 @@ export function Chat({
               reload={reload}
               isReadonly={isReadonly}
             />
+         </div>
 
-        <form className="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full max-w-[800px] ">
+         <form className="sticky bottom-0 w-full max-w-[800px] mx-auto p-4">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
@@ -81,6 +82,5 @@ export function Chat({
           )}
         </form>
       </div>
-
   );
 }
