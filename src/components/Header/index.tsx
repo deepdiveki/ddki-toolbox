@@ -22,11 +22,22 @@ const Header = () => {
   };
 
   useEffect(() => {
-      fetch("https://www.deepdive-ki.de/api/getSession", { credentials: "include" })
-        .then((res) => res.json())
+      fetch("https://www.deepdive-ki.de/api/getSession", {
+        method: "GET",
+        credentials: "include", // Ensures cookies are sent with request
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then((data) => {
           console.log("Fetched data:", data);
-          if (data.name) {
+          if (data?.name) {
             setUserName(data.name);
           } else {
             console.log("No session found", data);
@@ -34,6 +45,7 @@ const Header = () => {
         })
         .catch((err) => console.error("Error fetching session:", err));
     }, []);
+
 
   // Sticky menu
   const handleStickyMenu = () => {

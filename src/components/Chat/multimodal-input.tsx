@@ -212,10 +212,8 @@ function PureMultimodalInput({
         placeholder="Sende eine Nachricht an den DDKI-Chat"
         value={input}
         onChange={handleInput}
-        className={cx(
-          'h-[60px] max-h-[60px] overflow-hidden resize-none rounded-lg text-sm bg-white border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-800 dark:border-gray-600 dark:focus:ring-purple-400',
-          className,
-        )}
+        className= 'h-[60px] max-h-[60px] text-white overflow-hidden resize-none rounded-lg text-sm bg-white border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-800 dark:border-gray-600 dark:focus:ring-purple-400'
+
         rows={2}
         autoFocus
         onKeyDown={(event) => {

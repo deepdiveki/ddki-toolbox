@@ -29,21 +29,32 @@ function PureMessages({
 
   // Auto-scroll logic
   useEffect(() => {
-    if (messagesEndRef.current) {
+  if (messagesEndRef.current) {
     window.requestAnimationFrame(() => {
       setTimeout(() => {
+        // Scroll into view first
         messagesEndRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
+          behavior: 'smooth',
+          block: 'nearest',
         });
+
+        // Scroll a little further
+        const container = messagesContainerRef.current;
+        if (container) {
+          const offset = 200; // Adjust this value
+          container.scrollBy({
+            top: offset,
+            behavior: 'smooth',
+          });
+        }
       }, 100);
     });
   }
-}, [messages]); // Only runs when messages change
+}, [messages]);  // Only runs when messages change
 
   return (
     <div
-        className="flex flex-col flex-grow" ref={messagesContainerRef}>
+        ref={messagesContainerRef}>
 
       {messages.map((message, index) => (
         <PreviewMessage

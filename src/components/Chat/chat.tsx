@@ -1,6 +1,5 @@
 'use client';
 
-import Breadcrumb from "@/components/Breadcrumb";
 import type { Message } from 'ai';
 import { useChat } from 'ai/react';
 import { useState } from 'react';
@@ -55,20 +54,16 @@ export function Chat({
 
 
   return (
-    <>
-    <Breadcrumb pageTitle="KI-Chat" />
-      <div className="flex flex-col pt-[80px] pb-[120px]">
+      <div className="pb-[140px]">
 
-<div className="flex-grow flex flex-col ">
-        <Messages
-          chatId={id}
-          isLoading={isLoading}
-          messages={messages}
-          setMessages={setMessages}
-          reload={reload}
-          isReadonly={isReadonly}
-        />
-        </div>
+            <Messages
+              chatId={id}
+              isLoading={isLoading}
+              messages={messages}
+              setMessages={setMessages}
+              reload={reload}
+              isReadonly={isReadonly}
+            />
 
         <form className="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full max-w-[800px] ">
           {!isReadonly && (
@@ -87,6 +82,5 @@ export function Chat({
         </form>
       </div>
 
-    </>
   );
 }

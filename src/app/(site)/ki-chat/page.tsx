@@ -2,18 +2,23 @@
 
 import type { Message } from "ai";
 import { Chat } from "@/components/Chat/chat";
+import { DEFAULT_MODEL_NAME, models } from '@/lib/ai/models';
+
+const generateUUID = () => crypto.randomUUID();
 
 const DDKIKiChat = () => {
 
-  const chatId = "chat-123"; // A unique identifier for the chat
-  const initialMessages: Message[] = []; // An array of initial messages; can be empty if there are none
-  const isReadonly = false; // Set to true if the chat should be read-only
+//   const selectedModelId =
+//     models.find((model) => model.id === modelIdFromCookie)?.id ||
+//     DEFAULT_MODEL_NAME;
+
+  const chatId = generateUUID();
 
   return (
     <Chat
       id={chatId}
-      initialMessages={initialMessages}
-      isReadonly={isReadonly}
+      initialMessages={[]}
+      isReadonly={false}
     />
   );
 };

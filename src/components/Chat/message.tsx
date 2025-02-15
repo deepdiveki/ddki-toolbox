@@ -31,26 +31,26 @@ const PurePreviewMessage = ({
   return (
     <AnimatePresence>
       <motion.div
-        className="w-full mx-auto max-w-3xl px-4 group/message mb-5"
+        className="mx-auto flex-col px-8 max-w-[800px] group/message mb-5"
         initial={{ y: 5, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         data-role={message.role}
       >
         <div
           className={cx(
-            'flex gap-4 w-full group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl',
+            'group-data-[role=user]/message:ml-auto',
             {
               'w-full': mode === 'edit',
-              'group-data-[role=user]/message:w-fit': mode !== 'edit',
+              'group-data-[role=user]/message:ml-auto': mode !== 'edit',
             },
           )}
         >
 
             {message.content && mode === 'view' && (
-              <div className="flex flex-row gap-2 items-start">
+              <div className="flex flex-row">
 
                 <div
-                  className={cx('whitespace-pre-wrap break-words w-full max-w-2xl p-3 shadow-md', {
+                  className={cx('whitespace-pre-wrap break-words max-w-2xl p-3 shadow-md ', {
                     'ml-auto bg-blue-500 text-white rounded-l-lg rounded-br-lg': message.role === 'user',
                     'mr-auto bg-gray-700 text-white rounded-r-lg rounded-bl-lg': message.role === 'assistant',
                   })}
@@ -82,7 +82,7 @@ export const ThinkingMessage = () => {
 
   return (
     <motion.div
-      className="w-full mx-auto max-w-3xl px-4 group/message "
+      className="group/message "
       initial={{ y: 5, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
       data-role={role}
