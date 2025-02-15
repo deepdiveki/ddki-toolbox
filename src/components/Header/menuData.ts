@@ -27,7 +27,7 @@ const menuData: Menu[] = [
       },
       {
         id: 67,
-        title: "KI Chatbot",
+        title: "KI-Chat",
         newTab: false,
         path: "/ki-chat",
       },
@@ -39,15 +39,21 @@ const menuData: Menu[] = [
       },
       {
         id: 68,
-        title: "KI-Assistent",
+        title: "Chat mit PDF",
         newTab: false,
-        path: "/ki-assistent",
+        path: "/chat-mit-pdf",
       },
       {
         id: 70,
         title: "QR Code Generator",
         newTab: false,
         path: "/qrcode-generator",
+      },
+      {
+        id: 68,
+        title: "KI-Assistant erstellen",
+        newTab: false,
+        path: "/ki-assistent",
       },
     ],
   },

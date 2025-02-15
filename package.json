@@ -20,7 +20,7 @@
     "@tailwindcss/postcss": "^4.0.0",
     "@types/qrcode.react": "^1.0.5",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
-    "ai": "^4.1.28",
+    "ai": "^4.1.41",
     "autoprefixer": "^10.4.16",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",

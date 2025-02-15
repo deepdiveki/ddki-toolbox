@@ -45,7 +45,7 @@ const PreviewGeneratedText = ({ generatedContent, height, showQrCode }: Props) =
           onClick={copyToClipboard}
           className="button-border-gradient hover:button-gradient-hover relative mt-9 inline-flex items-center gap-1.5 rounded-lg px-6 py-3 text-sm text-white shadow-button hover:shadow-none"
         >
-          {copied ? "Copied" : "Copy"}
+          {copied ? "Kopieren abgeschlossen" : "Kopieren"}
         </button>
       </div>
       {showQrCode && generatedContent && (

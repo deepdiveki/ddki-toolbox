@@ -6,6 +6,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
 import { integrations, messages } from "../../../../integrations.config";
+import QRCodeAnimation from "@/components/QRCodeAnimation"
 
 const dataSchema = z.object({
   vom_user_eingefügter_link: z.string(),
@@ -55,7 +56,11 @@ const SpreadsheetGeneratorPage = () => {
         name="vom_user_eingefügter_link"
         content="This is AI Examples page for AI Tool"
       />
-      <Breadcrumb pageTitle="QR Code Generator" />
+      {/* Header mit Breadcrumb & Animation */}
+      <div className="flex items-center justify-center gap-4 mt-2">
+      <QRCodeAnimation />
+        <Breadcrumb pageTitle="QR Code Generator" />
+      </div> 
 
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">

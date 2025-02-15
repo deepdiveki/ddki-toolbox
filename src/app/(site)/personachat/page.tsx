@@ -7,19 +7,29 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import z from "zod";
 import { integrations, messages } from "../../../../integrations.config";
+import PersonaAnimation from "@/components/PersonaToolAnimation";
 
 const ArticleTitleGeneratorSchema = z.object({
   numberOfWord: z.string(),
-  articleTopic: z.string(),
 });
 
-const optionData = [1, 2, 3, 4, 5];
+const optionData = [
+  "Marie Curie",
+  "Albert Einstein",
+  "Ada Lovelace",
+  "Leonardo da Vinci",
+  "Rosa Parks",
+  "Nelson Mandela",
+  "Frida Kahlo",
+  "Wolfgang Amadeus Mozart",
+  "Amelia Earhart",
+  "Isaac Newton"
+];
 
 const ArticleTitleGeneratorPage = () => {
   const [generatedContent, setGeneratedContent] = useState("");
   const [data, setData] = useState({
     numberOfWord: "",
-    articleTopic: "",
   });
 
   const handleChange = (e: any) => {
@@ -49,11 +59,11 @@ const ArticleTitleGeneratorPage = () => {
       {
         role: "system",
         content:
-          "You will be provided with the article topic and number of word needed, and your task is to generate multiple article titles.",
+          "You will be provided with the number of words needed, and your task is to generate multiple article titles.",
       },
       {
         role: "user",
-        content: `Number of words: ${data.numberOfWord} \n Article topic: ${data.articleTopic}`,
+        content: `Number of words: ${data.numberOfWord}`,
       },
     ];
 
@@ -68,7 +78,7 @@ const ArticleTitleGeneratorPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       const cleanedResponse = response.data.replace(/"/g, "");
@@ -80,42 +90,28 @@ const ArticleTitleGeneratorPage = () => {
 
     setData({
       numberOfWord: "",
-      articleTopic: "",
     });
   };
 
   return (
     <>
-      <title>
-      Personachat
-      </title>
+      <title>Personachat</title>
       <meta name="description" content="Personachat" />
-      <Breadcrumb pageTitle="Personachat" />
+      <div className="flex items-center justify-center gap-4 mt-2">
+        <PersonaAnimation />
+        <Breadcrumb pageTitle="Persona-Chat" />
+      </div>
 
       <section className="pb-17.5 lg:pb-22.5 xl:pb-27.5">
         <div className="mx-auto grid max-w-[1170px] gap-8 px-4 sm:px-8 lg:grid-cols-12 xl:px-0">
           <div className="gradient-box rounded-lg bg-dark-8 p-8 lg:col-span-4">
             <h2 className="pb-2 text-2xl font-bold text-white">Personachat</h2>
-            <p className="pb-6">Mit wem möchten Sie sprechen:</p>
+            <p className="pb-6">Wähle eine fiktive oder historische Person für eine Unterhaltung aus
+            </p>
             <form onSubmit={handleSubmit}>
-              <div className="flex flex-col">
-                <label htmlFor="articleTopic" className="pb-4">
-                  Topic
-                </label>
-                <input
-                  onChange={handleChange}
-                  value={data.articleTopic}
-                  name="articleTopic"
-                  type="text"
-                  className="rounded-lg border border-white/[0.12] bg-dark-7 px-5 py-3 text-white outline-none focus:border-purple"
-                  placeholder="Type article topic here"
-                  required
-                />
-              </div>
-
               <Options
                 values={optionData}
-                title={"Select the Number of Words"}
+                title={"Hier auswählen:"}
                 name={"numberOfWord"}
                 handleChange={handleChange}
                 selected={data.numberOfWord}
@@ -129,7 +125,7 @@ const ArticleTitleGeneratorPage = () => {
           <PreviewGeneratedText
             generatedContent={generatedContent}
             height={262}
-          />{" "}
+          />
         </div>
       </section>
     </>
