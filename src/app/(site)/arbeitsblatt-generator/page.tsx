@@ -33,7 +33,7 @@ const ProductNameGeneratorPage = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!integrations?.isOpenAIEnabled) {
@@ -75,7 +75,12 @@ const ProductNameGeneratorPage = () => {
       setGeneratedContent(response.data);
     } catch (error) {
       setGeneratedContent("Please Add the API Key!");
-      console.error("Error:", error?.message);
+      
+      if (error instanceof Error) {
+        console.error("Error:", error.message);
+      } else {
+        console.error("An unknown error occurred", error);
+      }
     }
 
     setData({
