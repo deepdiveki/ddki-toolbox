@@ -35,7 +35,6 @@ function StyleSheet() {
             align-items: center;
             width: 80px;
             height: 80px;
-            margin-top: 30px
         }
 
         .animated-box {

@@ -39,8 +39,6 @@ function StyleSheet() {
             width: 80px;
             height: 80px;
             position: relative;
-                        margin-top: 40px
-
         }
 
         .center-circle {

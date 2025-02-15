@@ -37,7 +37,6 @@ function StyleSheet() {
             align-items: center;
             width: 80px;
             height: 80px;
-            margin-top: 40px
         }
 
         .outer-circle {
